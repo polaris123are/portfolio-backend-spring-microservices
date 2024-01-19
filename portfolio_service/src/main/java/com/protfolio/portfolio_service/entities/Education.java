@@ -28,7 +28,6 @@ public class Education extends AbstractPersistable<Long> {
     private LocalDate endDate;
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Portfolio portfolio;
+
 
 }

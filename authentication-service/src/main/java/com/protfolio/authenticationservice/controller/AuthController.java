@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -19,10 +20,10 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@RequestBody User user) {
+    public User registerUser(@RequestBody User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return "User registered successfully";
+        return user;
     }
 
     // Additional endpoints

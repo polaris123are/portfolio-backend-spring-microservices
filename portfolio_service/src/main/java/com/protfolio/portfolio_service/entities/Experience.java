@@ -24,8 +24,7 @@ public class Experience {
     private String position;
     private String location;
     private String organization;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Portfolio portfolio;
+
 
     // ExperienceType ENUM definition here
 

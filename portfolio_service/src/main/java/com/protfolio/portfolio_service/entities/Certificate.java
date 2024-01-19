@@ -24,8 +24,7 @@ public class Certificate {
     private String organizationIssuedBy;
     private String specialization;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Portfolio portfolio;
+
 
     // Getters and Setters
 }

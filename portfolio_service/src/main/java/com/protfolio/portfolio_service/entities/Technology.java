@@ -22,8 +22,7 @@ public class Technology {
     private String name;
     private String image;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Portfolio portfolio;
+
 
     // Getters and Setters
 }

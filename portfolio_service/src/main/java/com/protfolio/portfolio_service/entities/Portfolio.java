@@ -6,10 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "portfolios")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,7 +19,8 @@ public class Portfolio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private int userid;
+    String fullname;
     private String imagePath;
     private String aboutMe;
     private String email;
@@ -28,18 +29,18 @@ public class Portfolio {
     private String phoneNumber;
     private String specialization;
 
-    @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Project> projects;
 
-    @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL)
+    @OneToMany( cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Education> education;
 
-    @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Experience> workExperience;
 
-    @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL)
+    @OneToMany( cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Technology> technologies;
 
-    @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL)
+    @OneToMany( cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Certificate> certificates;
 }

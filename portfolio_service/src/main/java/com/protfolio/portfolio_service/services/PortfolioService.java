@@ -16,6 +16,7 @@ public class PortfolioService {
 
     @Transactional(readOnly = true)
     public List<Portfolio> findAll() {
+
         return portfolioRepository.findAll();
     }
 

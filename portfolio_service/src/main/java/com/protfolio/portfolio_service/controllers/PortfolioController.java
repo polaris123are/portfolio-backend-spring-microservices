@@ -1,6 +1,7 @@
 package com.protfolio.portfolio_service.controllers;
 
 import com.protfolio.portfolio_service.entities.Portfolio;
+import com.protfolio.portfolio_service.repositories.PortfolioRepository;
 import com.protfolio.portfolio_service.services.PortfolioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,13 +12,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/portfolios")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class PortfolioController {
 
+    private final PortfolioRepository portfolioRepository;
     private final PortfolioService portfolioService;
 
     @GetMapping
     public ResponseEntity<List<Portfolio>> getAllPortfolios() {
-        return ResponseEntity.ok(portfolioService.findAll());
+        return
+                ResponseEntity.ok(portfolioService.findAll());
     }
 
     @GetMapping("/{id}")
@@ -27,9 +31,28 @@ public class PortfolioController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/user/{id}")
+        public Portfolio getportfoliobyuserid(@PathVariable int id) {
+        return portfolioRepository.findbyuserid(id);
+    }
+
     @PostMapping
     public ResponseEntity<Portfolio> createPortfolio(@RequestBody Portfolio portfolio) {
-        return ResponseEntity.ok(portfolioService.save(portfolio));
+        Portfolio a=new  Portfolio();
+        a.setCertificates(portfolio.getCertificates());
+        a.setAboutMe(portfolio.getAboutMe());
+        a.setEmail(portfolio.getEmail());
+        a.setEducation(portfolio.getEducation());
+        a.setProjects(portfolio.getProjects());
+        a.setPhoneNumber(portfolio.getPhoneNumber());
+        a.setSpecialization(portfolio.getSpecialization());
+        a.setLinkedIn(portfolio.getLinkedIn());
+        a.setWorkExperience(portfolio.getWorkExperience());
+        a.setTwitter(portfolio.getTwitter());
+        a.setTechnologies(portfolio.getTechnologies());
+        a.setImagePath(a.getImagePath());
+        a.setUserid(portfolio.getUserid());
+    return ResponseEntity.ok(portfolioService.save(a));
     }
 
     @PutMapping("/{id}")

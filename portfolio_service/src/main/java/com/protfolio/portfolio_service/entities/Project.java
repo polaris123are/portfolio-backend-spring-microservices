@@ -24,8 +24,7 @@ public class Project {
     private String githubLink;
     private String tools;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Portfolio portfolio;
+
 
     // Getters and Setters
 }
